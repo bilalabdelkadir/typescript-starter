@@ -3,6 +3,7 @@ import { User } from 'src/users/user.entity';
 import {
   Column,
   Entity,
+  Index,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -26,6 +27,7 @@ class Post {
   @ManyToOne(() => User, (author: User) => author.posts)
   public author: User;
 
+  // @Index()
   @ManyToMany(() => Category)
   @JoinTable()
   public categories: Category[];

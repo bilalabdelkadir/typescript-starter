@@ -10,6 +10,7 @@ import { Exclude, Expose } from 'class-transformer';
 import Address from './address.entity';
 import Post from 'src/posts/post.entity';
 import PublicFile from 'src/files/publicFile.entity';
+// import PrivateFile from 'src/private-files/privateFile.entity';
 
 @Entity()
 export class User {
@@ -44,4 +45,13 @@ export class User {
     nullable: true,
   })
   avatar?: PublicFile;
+
+  @Column({
+    nullable: true,
+  })
+  @Exclude()
+  public currentHashedRefreshToken?: string;
+
+  // @OneToMany(() => PrivateFile, (file: PrivateFile) => file.owner)
+  // public files: PrivateFile[];
 }
